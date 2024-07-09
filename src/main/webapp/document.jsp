@@ -267,7 +267,7 @@
 					</tr>
 					<tr class="strong-row">
 						<td colspan="5" id="size-3-1"><strong>공동 위치도</strong></td>
-						<td colspan="6" id="size-3-2"><strong>공동 주변사진</strong></td>
+						<td colspan="6" id="size-3-2" colspan="2"><strong>공동 주변사진</strong></td>
 					</tr>
 					<tr>
 						<td colspan="5" id="size-4-1" rowspan="2"><img src="https://github.com/kim-src/js-document/assets/150884526/cce36602-a6c2-4989-85c0-521c4e0366de" alt="공동위치도" id="img-4-1"></td>
