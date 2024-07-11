@@ -16,7 +16,7 @@
 		padding: 0;
 		display: block;
 		width: 100%;
-		height: auto;
+		height: 100%;
 	}
 	
 	.container {
@@ -30,20 +30,55 @@
 		
 	.table {
 		table-layout: auto;
-		border-top: 1px solid black;
 		border-bottom: 1px solid black;
 		border-collapse: collapse;
 		border-spacing: 0;
 	}
 	
-	.table th, td {
+	.inner-table {
+		font-size: 10pt;
+		position: absolute;
+		background-color: white;
+		border-collapse: collapse;
+		margin-top: -8mm;
+		margin-left: 214.85mm;
+		z-index: 1;
+	}
+	
+	.table td {
 		border: 1px solid black;
 		padding: 0;
 	}
 	
-	.table th {
-		background-color: #f2f2f2;
+	.title {
+		position: relative;
+		width: 266.06mm;
+		height: 11.4mm;
 		font-size: 17pt;
+		text-align: center;
+		border: none;
+	}
+	
+	.title::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 1.5mm;
+		border-bottom: 1.2px solid black;
+		width: 17%;
+		margin: 0 auto;
+	}
+
+	.title::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 1.2mm;
+		border-bottom: 1.2px solid black;
+		width: 17%;
+		margin: 0 auto;
 	}
 	
 	.sub-title {
@@ -52,6 +87,7 @@
 	
 	.document-text td {
 		text-align: center;
+		white-space: nowrap;
 	}
 	
 	.strong-row td {
@@ -96,11 +132,12 @@
 	#size-2-6 {
 		width: 8.56mm;
 		height: 27.81mm;
-		padding-top: 1%;
 		font-size: 10.5pt;
 		writing-mode: vertical-lr;
 		background-color: #f2f2f2;
-		letter-spacing: 0.8em;
+	}
+	.gap-2-6 {
+		margin: 4px 0;
 	}
 	#size-2-7 {
 		width: 30.46mm;
@@ -121,9 +158,9 @@
 		background-color: #f2f2f2;
 		letter-spacing: -0.03em;
 	}
-	#gap-2-9 {
+	.gap-2-9 {
 		display: block;
-		margin: 3px 0;
+		margin: 5px 0;
 	}
 	#size-2-10 {
 		width: 8.86mm;
@@ -177,60 +214,33 @@
 		border: none;
 		border-right: 1px solid black;
 	}
-	#size-5-1 {
-		width: mm;
-		height: mm;
-	}
-	#size-5-2 {
-		width: mm;
-		height: mm;
-	}
-	#size-5-3 {
-		width: mm;
-		height: mm;
-	}
-	#size-5-4 {
-		width: mm;
-		height: mm;
-	}
-	#size-6-1 {
-		width: mm;
-		height: mm;
-	}
-	#size-6-2 {
-		width: mm;
-		height: mm;
-	}
-	#size-6-3 {
-		width: mm;
-		height: mm;
-	}
-	#size-6-4 {
-		width: mm;
-		height: mm;
-	}
 </style>
 </head>
 <body>
 	<section class="container">
 		<div class="main">
 			<table class="table" id="total-size">
-				<thead>
-					<tr>
-						<th colspan="11">분석 공동조사서</th>
-					</tr>
-				</thead>
 				<tbody class="document-text">
+					<tr>
+						<th colspan="11" class="title"><strong>분석 공동조사서</strong>
+							<table class="inner-table">
+								<tr>
+									<td style="width: 25mm; height: 8mm;"><strong>공동관리번호</strong></td>
+									<td style="width: 25mm; height: 8mm;"></td>
+								</tr>
+							</table>
+						</th>
+					</tr>
 					<tr>
 						<td colspan="1" id="size-2-1" class="sub-title">탐사 / 천공</td>
 						<td colspan="1" id="size-2-2">탐사일  2022.02.15 / 천공일 -</td>
 						<td colspan="1" id="size-2-3" rowspan="4">위<br><br><br>치</td>
 						<td colspan="1" id="size-2-4"class="sub-title">위도</td>
 						<td colspan="1" id="size-2-5">37.816955</td>
-						<td colspan="1" id="size-2-6" rowspan="4">공동규모</td>
+						<td colspan="1" id="size-2-6" rowspan="4">공<span class="gap-2-6"></span>동<span class="gap-2-6"></span>규<span class="gap-2-6"></span>모</td>
 						<td colspan="1" id="size-2-7" class="sub-title">토피(㎝)</td>
 						<td colspan="1" id="size-2-8">53</td>
-						<td colspan="1" id="size-2-9" rowspan="2">공동<span id="gap-2-9"></span>관리</td>
+						<td colspan="1" id="size-2-9" rowspan="2">공동<span class="gap-2-9"></span>관리</td>
 						<td colspan="1" id="size-2-10" class="sub-title">번호</td>
 						<td colspan="1" id="size-2-11">-</td>
 					</tr>
@@ -246,12 +256,12 @@
 					</tr>
 					<tr>
 						<td colspan="1" id="size-2-1" class="sub-title">도로명 주소</td>
-						<td colspan="1" id="size-2-2">탐사일  2022.02.15 / 천공일 -</td>
+						<td colspan="1" id="size-2-2">연곡리 327</td>
 						<td colspan="1" id="size-2-4" class="sub-title">차선</td>
 						<td colspan="1" id="size-2-5">중앙선 기준 1차로</td>
 						<td colspan="1" id="size-2-7" class="sub-title">도로횡단 폭(㎝)</td>
 						<td colspan="1" id="size-2-8">69</td>
-						<td colspan="1" id="size-2-9" rowspan="2">분석<span id="gap-2-9"></span>공동</td>
+						<td colspan="1" id="size-2-9" rowspan="2">분석<span class="gap-2-9"></span>공동</td>
 						<td colspan="1" id="size-2-10" class="sub-title">번호</td>
 						<td colspan="1" id="size-2-11">038-1</td>
 					</tr>
@@ -265,33 +275,40 @@
 						<td colspan="1" id="size-2-10" class="sub-title">등급</td>
 						<td colspan="1" id="size-2-11">-</td>
 					</tr>
+
+					<!-- location data -->
 					<tr class="strong-row">
-						<td colspan="5" id="size-3-1"><strong>공동 위치도</strong></td>
-						<td colspan="6" id="size-3-2" colspan="2"><strong>공동 주변사진</strong></td>
+						<td colspan="5" style="width: 169.34mm; height: 7.34mm;"><strong>공동 위치도</strong></td>
+						<td colspan="6" colspan="2" style="width: 96.72mm; height: 7.34mm;"><strong>공동 주변사진</strong></td>
 					</tr>
 					<tr>
-						<td colspan="5" id="size-4-1" rowspan="2"><img src="https://github.com/kim-src/js-document/assets/150884526/cce36602-a6c2-4989-85c0-521c4e0366de" alt="공동위치도" id="img-4-1"></td>
-						<td colspan="3" id="size-4-2-1">공동 주변사진</td>
-						<td colspan="3" id="size-4-2-2">공동 주변사진</td>
+						<td colspan="5" rowspan="2" style="width: 169.34mm; height: 57.08mm;"><img src="https://github.com/kim-src/js-document/assets/150884526/e1585b17-a5e6-427b-931c-e0232f1ad458" alt="location"></td>
+						<td colspan="3" style="width: 48.36mm; height: 28.54mm;"><img src="https://github.com/kim-src/js-document/assets/150884526/cc81aefb-b711-4420-bfb9-26807280fd20" alt="front"></td>
+						<td colspan="3" style="width: 48.36mm; height: 28.54mm;"><img src="https://github.com/kim-src/js-document/assets/150884526/98e01842-79c1-4181-832d-7739a60da73b" alt="back"></td>
 					</tr>
 					<tr>
-						<td colspan="3" id="size-4-2-3">공동 주변사진</td>
-						<td colspan="3" id="size-4-2-4">공동 주변사진</td>
+						<td colspan="3" style="width: 48.36mm; height: 28.54mm;"><img src="https://github.com/kim-src/js-document/assets/150884526/559eac82-8921-40d3-8624-986334f805b4" alt="left"></td>
+						<td colspan="3" style="width: 48.36mm; height: 28.54mm;"><img src="https://github.com/kim-src/js-document/assets/150884526/f00c850a-e68d-4e4f-a225-2872f91586e7" alt="right"></td>
 					</tr>
-					<tr>
-						<td colspan="5"><img src="https://github.com/kim-src/js-document/assets/150884526/cce36602-a6c2-4989-85c0-521c4e0366de" alt="공동위치도" style="width:100%;height:auto;"></td>
-						<td colspan="6"><strong>공동 주변사진</strong></td>
+
+					<!-- cavity data -->
+					<tr class="strong-row">
+						<td colspan="3" rowspan="2" style="width: 131.28mm; height: 10.46mm;"><strong>(상단) 탐사영상 평면 / (하단) 노면영상</strong></td>
+						<td colspan="5" style="width: 85.12mm; height: 5.23mm;"><strong>탐사영상 수직단면</strong></td>
+						<td colspan="3" rowspan="2" style="width: 49.66mm; height: 10.46mm;"><strong>공동확인 내시경 영상</strong></td>
 					</tr>
 					<tr class="strong-row">
-						<td colspan="4"><strong>(상단) 탐사영상 평면 / (하단) 노면영상</strong></td>
-						<td colspan="4"><strong>탐사영상 수직단면</strong></td>
-						<td colspan="3"><strong>공동확인 내시경 영상</strong></td>
+						<td colspan="2" style="width: 42.56mm; height: 5.23mm;"><strong>종단면</strong></td>
+						<td colspan="3" style="width: 42.56mm; height: 5.23mm;"><strong>횡단면</strong></td>
 					</tr>
 					<tr>
-						<td colspan="4"><img src="https://github.com/kim-src/js-document/assets/150884526/09224907-81d2-4d9d-8777-63a7078e3344" alt="평단면" style="width:100%;height:auto;"></td>
-						<td colspan="2"><img src="https://github.com/kim-src/js-document/assets/150884526/dd7bb547-f67c-488b-87df-774755345189" alt="종단면" style="width:100%;height:auto;"></td>
-						<td colspan="2"><img src="https://github.com/kim-src/js-document/assets/150884526/d7c5e9da-4539-4301-9981-f830998927d6" alt="종단면" style="width:100%;height:auto;"></td>
-						<td colspan="3"><img src="" alt="" style="width:100%;height:auto;"></td>
+						<td colspan="3" style="width: 131.28mm; height: 15mm;"><img src="https://github.com/kim-src/js-document/assets/150884526/4ea956b1-75aa-45db-8eef-9d8079943a6e" alt="flat-section"></td>
+						<td colspan="2" rowspan="2" style="width: 42.56mm; height: 48mm;"><img src="https://github.com/kim-src/js-document/assets/150884526/ba1df91c-ac29-4034-90c3-2ce8880c4d9b" alt="long-section"></td>
+						<td colspan="3" rowspan="2" style="width: 42.56mm; height: 48mm;"><img src="https://github.com/kim-src/js-document/assets/150884526/d0894272-7ff5-40df-bc1e-ec97c901dee2" alt="cross-section"></td>
+						<td colspan="3" rowspan="2" style="width: 49.66mm; height: 48mm;"><img src="https://github.com/kim-src/js-document/assets/150884526/4d0be670-1d2b-4ed7-9c8e-a0b7c965506d" alt="cavity"></td>
+					</tr>
+					<tr>
+						<td colspan="3" style="width: 131.28mm; height: 33mm;"><img src="https://github.com/kim-src/js-document/assets/150884526/e88d4d5a-fc6c-4c9d-acb8-1d7fae61f0bc" alt="surface"></td>
 					</tr>
 				</tbody>
 			</table>
