@@ -260,7 +260,7 @@
 <script src="resources/lib/html2canvas.min.js"></script>
 </head>
 <body>
-	<button onclick="generatePDF();">PDF 변환</button>
+	<button onclick="getPDF();">PDF 변환</button>
 	<section class="container">
 		<div class="main" id="full-document">
 			<table class="table total-size">
@@ -361,7 +361,7 @@
 </body>
 <script>
 	
-	function generatePDF() {
+	function getPDF() {
 		if (typeof html2canvas === "undefined" || typeof jsPDF === "undefined") {
 	        alert("PDF 생성에 문제가 발생되었습니다. 페이지 새로고침 바랍니다.");
 	        return;
@@ -370,31 +370,22 @@
 	    html2canvas(document.getElementById('full-document')).then(canvas => {
 	        const imgData = canvas.toDataURL('image/png');
 	        const pdf = new jsPDF({
-	        	orientation: 'p',
-	            unit: 'pt',
-	            format: 'a4'
+	        	orientation: 'landscape',
+	            unit: 'mm',
+	            format: 'a4',
 	        });
 		   
 	        const imgProps = pdf.getImageProperties(imgData);
-	        const pdfWidth = pdf.internal.pageSize.getWidth();
+	        const pdfWidth = pdf.internal.pageSize.getWidth() - 30;
 	        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 	        
-	        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-	        
-	        const fileName = prompt("저장할 파일의 이름을 입력하세요. : ", "download.pdf");
-		    if(fileName) {
-		    	pdf.save(fileName);
-		    }
-		    else {
-		    	alert("파일 저장이 취소되었습니다.");
-		    }
+	        pdf.addImage(imgData, 'PNG', 15, 17, pdfWidth, pdfHeight);
+	        pdf.save("download.pdf");
 	        
 	    }).catch(error => {
 	    	console.error("PDF 생성 오류 발생 : ", error);
 	    	alert("PDF 생성에 문제가 발생되었습니다. 콘솔창 확인 바랍니다.");
 	    });
-	    
-	    
 	}
 	
 </script>
