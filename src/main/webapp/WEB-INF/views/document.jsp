@@ -7,9 +7,15 @@
 <meta charset="UTF-8">
 <title>js-document</title>
 <style>
+	@font-face {
+        font-family: "ChosunNm";
+        src: url("fonts/ChosunNm.ttf") format("truetype");
+    }
+    
 	body {
 		margin: 0;
 		padding: 0;
+		font-family: "ChosunNm", ChosunNm;
 	}
 	
 	img {
@@ -20,12 +26,8 @@
 		height: 100%;
 	}
 	
-	.container {
-		margin: 4% 0;
-		height: auto;
+	.main {
 		justify-content: center;
-		align-items: center;
-		text-align: center;
 		display: flex;
 	}
 		
@@ -254,10 +256,13 @@
 		height: 33mm;
 	}
 </style>
+<script src="resources/lib/jspdf.min.js"></script>
+<script src="resources/lib/html2canvas.min.js"></script>
 </head>
 <body>
+	<button onclick="generatePDF();">PDF 변환</button>
 	<section class="container">
-		<div class="main">
+		<div class="main" id="full-document">
 			<table class="table total-size">
 				<tbody class="document-text">
 					<tr>
@@ -321,13 +326,13 @@
 						<td colspan="6" class="record-3-2" colspan="2"><strong>공동 주변사진</strong></td>
 					</tr>
 					<tr>
-						<td colspan="5" class="record-4-1" rowspan="2"><img src="https://github.com/kim-src/js-document/assets/150884526/e1585b17-a5e6-427b-931c-e0232f1ad458" alt="location"></td>
-						<td colspan="3" class="record-4-2"><img src="https://github.com/kim-src/js-document/assets/150884526/cc81aefb-b711-4420-bfb9-26807280fd20" alt="front"></td>
-						<td colspan="3" class="record-4-2"><img src="https://github.com/kim-src/js-document/assets/150884526/98e01842-79c1-4181-832d-7739a60da73b" alt="back"></td>
+						<td colspan="5" class="record-4-1" rowspan="2"><img src="resources/images/location.jpg" alt="location"></td>
+						<td colspan="3" class="record-4-2"><img src="resources/images/front.jpg" alt="front"></td>
+						<td colspan="3" class="record-4-2"><img src="resources/images/back.jpg" alt="back"></td>
 					</tr>
 					<tr>
-						<td colspan="3" class="record-4-2"><img src="https://github.com/kim-src/js-document/assets/150884526/559eac82-8921-40d3-8624-986334f805b4" alt="left"></td>
-						<td colspan="3" class="record-4-2"><img src="https://github.com/kim-src/js-document/assets/150884526/f00c850a-e68d-4e4f-a225-2872f91586e7" alt="right"></td>
+						<td colspan="3" class="record-4-2"><img src="resources/images/left.jpg" alt="left"></td>
+						<td colspan="3" class="record-4-2"><img src="resources/images/right.jpg" alt="right"></td>
 					</tr>
 
 					<!-- cavity data -->
@@ -341,20 +346,56 @@
 						<td colspan="3" class="record-5-4"><strong>횡단면</strong></td>
 					</tr>
 					<tr>
-						<td colspan="3" class="record-6-1"><img src="https://github.com/kim-src/js-document/assets/150884526/4ea956b1-75aa-45db-8eef-9d8079943a6e" alt="flat-section"></td>
-						<td colspan="2" class="record-6-2" rowspan="2"><img src="https://github.com/kim-src/js-document/assets/150884526/ba1df91c-ac29-4034-90c3-2ce8880c4d9b" alt="long-section"></td>
-						<td colspan="3" class="record-6-2" rowspan="2"><img src="https://github.com/kim-src/js-document/assets/150884526/d0894272-7ff5-40df-bc1e-ec97c901dee2" alt="cross-section"></td>
-						<td colspan="3" class="record-6-3" rowspan="2"><img src="https://github.com/kim-src/js-document/assets/150884526/4d0be670-1d2b-4ed7-9c8e-a0b7c965506d" alt="cavity"></td>
+						<td colspan="3" class="record-6-1"><img src="resources/images/flat-section.jpg" alt="flat-section"></td>
+						<td colspan="2" class="record-6-2" rowspan="2"><img src="resources/images/long-section.jpg" alt="long-section"></td>
+						<td colspan="3" class="record-6-2" rowspan="2"><img src="resources/images/cross-section.jpg" alt="cross-section"></td>
+						<td colspan="3" class="record-6-3" rowspan="2"><img src="resources/images/cavity.jpg" alt="cavity"></td>
 					</tr>
 					<tr>
-						<td colspan="3" class="record-6-4"><img src="https://github.com/kim-src/js-document/assets/150884526/e88d4d5a-fc6c-4c9d-acb8-1d7fae61f0bc" alt="surface"></td>
+						<td colspan="3" class="record-6-4"><img src="resources/images/surface.jpg" alt="surface"></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</section>
 </body>
-<script src="/webjars/jquery/3.7.1/jquery.min.js"></script>
 <script>
+	
+	function generatePDF() {
+		if (typeof html2canvas === "undefined" || typeof jsPDF === "undefined") {
+	        alert("PDF 생성에 문제가 발생되었습니다. 페이지 새로고침 바랍니다.");
+	        return;
+	    }
+		
+	    html2canvas(document.getElementById('full-document')).then(canvas => {
+	        const imgData = canvas.toDataURL('image/png');
+	        const pdf = new jsPDF({
+	        	orientation: 'p',
+	            unit: 'pt',
+	            format: 'a4'
+	        });
+		   
+	        const imgProps = pdf.getImageProperties(imgData);
+	        const pdfWidth = pdf.internal.pageSize.getWidth();
+	        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+	        
+	        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+	        
+	        const fileName = prompt("저장할 파일의 이름을 입력하세요. : ", "download.pdf");
+		    if(fileName) {
+		    	pdf.save(fileName);
+		    }
+		    else {
+		    	alert("파일 저장이 취소되었습니다.");
+		    }
+	        
+	    }).catch(error => {
+	    	console.error("PDF 생성 오류 발생 : ", error);
+	    	alert("PDF 생성에 문제가 발생되었습니다. 콘솔창 확인 바랍니다.");
+	    });
+	    
+	    
+	}
+	
 </script>
 </html>
