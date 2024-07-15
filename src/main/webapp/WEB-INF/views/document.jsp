@@ -8,14 +8,14 @@
 <title>js-document</title>
 <style>
 	@font-face {
-        font-family: "ChosunNm";
-        src: url("fonts/ChosunNm.ttf") format("truetype");
+        font-family: "NanumMyeongjo";
+        src: url("resources/fonts/NanumMyeongjo.otf") format("truetype");
     }
     
 	body {
 		margin: 0;
 		padding: 0;
-		font-family: "ChosunNm", ChosunNm;
+		font-family: "NanumMyeongjo", NanumMyeongjo;
 	}
 	
 	img {
