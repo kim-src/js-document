@@ -1,18 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>js-document</title>
 <style>
+	/* 기본 스타일 */
 	@font-face {
-        font-family: "ChosunNm";
-        src: url("resources/fonts/ChosunNm.ttf") format("truetype");
+        font-family: "NanumMyeongjo";
+        src: url("resources/fonts/NanumMyeongjo.otf") format("truetype");
     }
     
 	body {
 		margin: 0;
 		padding: 0;
-		font-family: "ChosunNm", ChosunNm;
+		font-family: "NanumMyeongjo", NanumMyeongjo;
 	}
 	
 	img {
@@ -50,6 +54,9 @@
 		padding: 0;
 	}
 	
+	
+	
+	/* 세부 스타일 */
 	.title {
 		position: relative;
 		width: 266.06mm;
@@ -58,7 +65,6 @@
 		text-align: center;
 		border: none;
 	}
-	
 	.title::after {
 		content: "";
 		position: absolute;
@@ -69,7 +75,6 @@
 		width: 17%;
 		margin: 0 auto;
 	}
-
 	.title::before {
 		content: "";
 		position: absolute;
@@ -94,6 +99,21 @@
 		background-color: #f2f2f2;
 	}
 	
+	.upload-button {
+		display: inline-block;
+		padding: 10px;
+		background: #ccc;
+		cursor: pointer;
+		border-radius: 5px;
+		border: 1px solid #ccc;
+	}
+	.upload-button:hover {
+		background: #ddd;
+	}
+	
+	
+	
+	/* 테이블 규격 */
 	.total-size {
 		width: 266.05mm;
 		height: 163.00mm;
@@ -253,9 +273,11 @@
 		height: 33mm;
 	}
 </style>
+<script src="resources/lib/jspdf.min.js"></script>
+<script src="resources/lib/html2canvas.min.js"></script>
 </head>
 <body>
-	<button onclick="generatePDF();">PDF 변환</button>
+	<button onclick="getPDF();">PDF 변환</button>
 	<section class="container">
 		<div class="main" id="full-document">
 			<table class="table total-size">
@@ -321,7 +343,11 @@
 						<td colspan="6" class="record-3-2" colspan="2"><strong>공동 주변사진</strong></td>
 					</tr>
 					<tr>
-						<td colspan="5" class="record-4-1" rowspan="2"><img src="resources/images/location.jpg" alt="location"></td>
+						<td colspan="5" class="record-4-1" id="drop-location" rowspan="2">
+							
+							<input type="file" id="location-image" multiple accept="image/*" style="display:none">
+							<label class="upload-button" for="location-image">이미지를 가져오세요.</label>
+						</td>
 						<td colspan="3" class="record-4-2"><img src="resources/images/front.jpg" alt="front"></td>
 						<td colspan="3" class="record-4-2"><img src="resources/images/back.jpg" alt="back"></td>
 					</tr>
@@ -354,11 +380,10 @@
 		</div>
 	</section>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.0.0-rc.7/html2canvas.min.js"></script>
 <script>
 	
-	function generatePDF() {
+	/* PDF 변환 기능 */
+	function getPDF() {
 		if (typeof html2canvas === "undefined" || typeof jsPDF === "undefined") {
 	        alert("PDF 생성에 문제가 발생되었습니다. 페이지 새로고침 바랍니다.");
 	        return;
@@ -367,21 +392,49 @@
 	    html2canvas(document.getElementById('full-document')).then(canvas => {
 	        const imgData = canvas.toDataURL('image/png');
 	        const pdf = new jsPDF({
-	        	orientation: 'p',
-	            unit: 'pt',
-	            format: 'a4'
+	        	orientation: 'landscape',
+	            unit: 'mm',
+	            format: 'a4',
 	        });
 		   
 	        const imgProps = pdf.getImageProperties(imgData);
-	        const pdfWidth = pdf.internal.pageSize.getWidth();
+	        const pdfWidth = pdf.internal.pageSize.getWidth() - 30;
 	        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 	        
-	        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-	        pdf.save('download.pdf');
+	        pdf.addImage(imgData, 'PNG', 15, 17, pdfWidth, pdfHeight);
+	        pdf.save("download.pdf");
+	        
 	    }).catch(error => {
 	    	console.error("PDF 생성 오류 발생 : ", error);
 	    	alert("PDF 생성에 문제가 발생되었습니다. 콘솔창 확인 바랍니다.");
 	    });
+	}
+	
+	
+	
+	/* 드래그 업로드 기능 */
+	document.getElementById("location-image").ondragover = function(e) {
+		e.preventDefault();
+	};
+	
+	document.getElementById("location-image").ondrop = function(e) {
+		e.preventDefault();
+		var files = e.dataTransfer.files;
+		uploadFiles(files);
+	};
+	
+	function uploadFiles(files) {
+		for (var i = 0; i < files.length; i++) {
+			var file = files[i];
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				var img = new Image();
+				img.src = e.target.result;
+				document.getElementById("location-image").appendChild(img);
+	    	};
+	    	
+	    	reader.readAsDataURL(file);
+		}
 	}
 	
 </script>

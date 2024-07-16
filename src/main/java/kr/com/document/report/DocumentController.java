@@ -8,7 +8,7 @@ public class DocumentController {
 	
 	@GetMapping(value="/document.do")
 	public String getDocument() {
-		return "document";
+		return "document/document";
 	}
 
 }
