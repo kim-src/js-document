@@ -39,7 +39,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="drop-area" class="record-4-1" onclick="removeImage()">
+	<div id="drop-area" class="record-4-1">
 	  <h3>이미지를 가져오세요.</h3>
 	  <input type="file" id="fileElement" multiple accept="image/*" style="display: none">
 	  <label class="button" for="fileElement">이미지 선택</label>
