@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>js-document</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tableSet.css">
 <style>
 	/* 기본 스타일 */
 	@font-face {
@@ -101,7 +102,7 @@
 	
 	
 	/* 첨부 이미지 */
-	#drop-area {
+	#css-location {
 		margin: 0;
 		padding: 0;
 		cursor: pointer;		
@@ -111,7 +112,7 @@
 		font-family: Arial, sans-serif;
 		position: relative;
 	}
-	#drop-area:hover {
+	#css-location:hover {
 		background: skyblue;
 	}
 	.button {
@@ -125,167 +126,6 @@
 	}
 	.button:hover {
 	  background: #ddd;
-	}
-	
-	
-	/* 테이블 규격 */
-	.total-size {
-		width: 266.05mm;
-		height: 163.00mm;
-	}
-	
-	.record-1 {
-		width: 25mm;
-		height: 8mm;
-	}
-	
-	.record-2-1 {
-		width: 22.86mm;
-		height: 6.95mm;
-		font-size: 10.5pt;
-		letter-spacing: -0.03em;
-	}
-	
-	.record-2-2 {
-		width: 82.88mm;
-		height: 6.95mm;
-		font-size: 10.5pt;
-		letter-spacing: -0.03em;
-	}
-	
-	.record-2-3 {
-		width: 8.32mm;
-		height: 27.81mm;
-		font-size: 10.5pt;
-		background-color: #f2f2f2;
-		letter-spacing: -0.03em;
-	}
-	
-	.record-2-4 {
-		width: 8.32mm;
-		height: 6.95mm;
-		font-size: 10.5pt;
-		letter-spacing: -0.03em;
-	}
-	
-	.record-2-5 {
-		width: 46.97mm;
-		height: 6.95mm;
-		font-size: 10.5pt;
-		letter-spacing: -0.03em;
-	}
-	
-	.record-2-6 {
-		width: 8.56mm;
-		height: 27.81mm;
-		font-size: 10.5pt;
-		writing-mode: vertical-lr;
-		background-color: #f2f2f2;
-	}
-	
-	.gap-2-6 {
-		margin: 4px 0;
-	}
-	
-	.record-2-7 {
-		width: 30.46mm;
-		height: 6.95mm;
-		font-size: 10.5pt;
-		letter-spacing: -0.03em;
-	}
-	
-	.record-2-8 {
-		width: 12.35mm;
-		height: 6.95mm;
-		font-size: 10.5pt;
-		letter-spacing: -0.03em;
-	}
-	
-	.record-2-9 {
-		width: 8.86mm;
-		height: 13.91mm;
-		font-size: 10.5pt;
-		background-color: #f2f2f2;
-		letter-spacing: -0.03em;
-	}
-	
-	.gap-2-9 {
-		display: block;
-		margin: 5px 0;
-	}
-	
-	.record-2-10 {
-		width: 8.86mm;
-		height: 6.95mm;
-		font-size: 10.5pt;
-		letter-spacing: -0.03em;
-	}
-	
-	.record-2-11 {
-		width: 27.62mm;
-		height: 6.95mm;
-		font-size: 10.5pt;
-		letter-spacing: -0.03em;
-	}
-	
-	.record-3-1 {
-		width: 169.34mm;
-		height: 7.34mm;
-	}
-	
-	.record-3-2 {
-		 width: 96.72mm;
-		 height: 7.34mm;
-	}
-	
-	.record-4-1 {
-		width: 169.34mm;
-		height: 57.08mm;
-	}
-	
-	.record-4-2 {
-		width: 48.36mm;
-		height: 28.54mm;
-	}
-	
-	.record-5-1 {
-		width: 131.28mm;
-		height: 10.46mm;
-	}
-	
-	.record-5-2 {
-		width: 85.12mm;
-		height: 5.23mm;
-	}
-	
-	.record-5-3 {
-		width: 49.66mm;
-		height: 10.46mm;
-	}
-	
-	.record-5-4 {
-		width: 42.56mm;
-		height: 5.23mm;
-	}
-	
-	.record-6-1 {
-		width: 131.28mm;
-		height: 15mm;
-	}
-	
-	.record-6-2 {
-		width: 42.56mm;
-		height: 48mm;
-	}
-	
-	.record-6-3 {
-		width: 49.66mm;
-		height: 48mm;
-	}
-	
-	.record-6-4 {
-		width: 131.28mm;
-		height: 33mm;
 	}
 </style>
 <script src="resources/lib/jspdf.min.js"></script>
@@ -358,11 +198,11 @@
 						<td colspan="6" class="record-3-2" colspan="2"><strong>공동 주변사진</strong></td>
 					</tr>
 					<tr>
-						<td colspan="5" class="record-4-1" id="drop-area" rowspan="2">
+						<td colspan="5" class="record-4-1" id="css-location" rowspan="2">
 							<div>
 								<h3>이미지를 가져오세요.</h3>
-								<input type="file" id="fileElement" multiple accept="image/*" style="display: none">
-								<label class="button" for="fileElement">이미지 선택</label>
+								<input type="file" id="img-location" multiple accept="image/*" style="display: none">
+								<label class="button" for="img-location">이미지 선택</label>
 							</div>
 						</td>
 						<td colspan="3" class="record-4-2"><img src="resources/images/front.jpg" alt="front"></td>
@@ -397,91 +237,91 @@
 		</div>
 	</section>
 </body>
+<script src="${pageContext.request.contextPath}/resources/js/pdfGenerator.js">/* PDF 변환 기능 */</script>
 <script>
-	
-	/* PDF 변환 기능 */
-	function getPDF() {
-		if (typeof html2canvas === "undefined" || typeof jsPDF === "undefined") {
-	        alert("PDF 생성에 문제가 발생되었습니다. 페이지 새로고침 바랍니다.");
-	        return;
-	    }
-		
-	    html2canvas(document.getElementById('full-document')).then(canvas => {
-	        const imgData = canvas.toDataURL('image/png');
-	        const pdf = new jsPDF({
-	        	orientation: 'landscape',
-	            unit: 'mm',
-	            format: 'a4',
-	        });
-		   
-	        const imgProps = pdf.getImageProperties(imgData);
-	        const pdfWidth = pdf.internal.pageSize.getWidth() - 30;
-	        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-	        
-	        pdf.addImage(imgData, 'PNG', 15, 17, pdfWidth, pdfHeight);
-	        pdf.save("download.pdf");
-	        
-	    }).catch(error => {
-	    	console.error("PDF 생성 오류 발생 : ", error);
-	    	alert("PDF 생성에 문제가 발생되었습니다. 콘솔창 확인 바랍니다.");
-	    });
-	}
-	
-	
-	
 	/* 드래그 업로드 기능 */
-	document.getElementById('drop-area').ondragover = function(e) {
-	  e.preventDefault();
+	
+	// dragover 관련 EventListener 추가를 위한 ID 요소 탐색
+	document.getElementById('css-location').ondragover = function(e) {
+		// 브라우저의 이미지 관련 기능 차단
+		e.preventDefault();
 	};
 	
-	document.getElementById('drop-area').ondrop = function(e) {
-	  e.preventDefault();
-	  var files = e.dataTransfer.files;
-	  uploadFiles(files);
+	// drop 관련 EventListener 추가를 위한 ID 요소 탐색
+	document.getElementById('css-location').ondrop = function(e) {
+		// 브라우저의 이미지 관련 기능 차단
+		e.preventDefault();
+		// dataTransfer 객체 = 드래그 된 데이터 포함
+		// files 속성 = 드래그 된 파일 리스트에 접근
+		var files = e.dataTransfer.files;
+		// 파일을 서버로 전송 및 클라이언트 측에서 처리할 수 있도록 설정
+		uploadFiles(files);
 	};
 	
-	// 이벤트 리스너를 input 요소에 연결
-	document.getElementById('fileElement').addEventListener('change', function(e) {
+	// change 관련 EventListener 추가를 위한 ID 요소 탐색
+	document.getElementById('img-location').addEventListener('change', function(e) {
+		// 사용자가 선택한 files 배열 반환
 		var files = e.target.files;
+		// 파일을 서버로 전송 및 클라이언트 측에서 처리할 수 있도록 설정
 		uploadFiles(files);
 	});
 	
+	// uploadFiles 함수 정의
 	function uploadFiles(files) {
-		var dropArea = document.getElementById('drop-area');
-		var record41 = document.querySelector('.record-4-1');
-		// width, height 적용
-		var width = window.getComputedStyle(record41).width;
-		var height = window.getComputedStyle(record41).height;
-		// 초기 내용 제거
+		// css-location 요소를 dropArea 변수에 할당
+		var dropArea = document.getElementById('css-location');
+		// record-4-1 요소를 recordCSS 변수에 할당
+		var recordCSS = document.querySelector('.record-4-1');
+		// recordCSS 변수의 width를 width 변수에 할당
+		var width = window.getComputedStyle(recordCSS).width;
+		// recordCSS 변수의 height를 height 변수에 할당
+		var height = window.getComputedStyle(recordCSS).height;
+		// HTML 초기화 = 새로운 파일을 드롭하면 이전 파일이 소멸되도록 설정
 		dropArea.innerHTML = '';
-		
-	  for (var i = 0; i < files.length; i++) {
+	
+	// files 배열 순회 설정
+	for (var i = 0; i < files.length; i++) {
+		// file 변수에 files 배열의 i번째 파일 할당
 	    var file = files[i];
+		// 파일 내용을 해독하기 위한 FileReader 객체 생성
 	    var reader = new FileReader();
+		// FileReader 객체의 onload 이벤트 핸들러 설정
 	    reader.onload = function(e) {
-	      var img = new Image();
-	      img.id = 'uploaded-img';
-	      img.src = e.target.result;
-	      img.onclick = removeImage;
-	      img.style.position = 'absolute';
-	      // 이미지 상단 정렬
-	      img.style.top = '0';
-	      // 이미지 좌측 정렬
-	      img.style.left = '0';
-	      dropArea.style.width = width;
-	      dropArea.style.height = height;
-	      dropArea.appendChild(img);
+			// 새로운 Image 객체 생성
+			var img = new Image();
+			// Image 객체의 id 속성 설정
+			img.id = 'uploaded-img';
+			// Image 객체의 소스를 FileReader가 읽은 데이터로 설정
+			img.src = e.target.result;
+			// 이미지 클릭 시 호출되는 removeImage 함수 설정
+			img.onclick = removeImage;
+			// 아래의 위치 정보를 절대 위치로 설정
+			img.style.position = 'absolute';
+			// 이미지 상단 정렬
+			img.style.top = '0';
+			// 이미지 좌측 정렬
+			img.style.left = '0';
+			// dropArea 변수의 너비 설정
+			dropArea.style.width = width;
+			// dropArea 변수의 높이 설정
+			dropArea.style.height = height;
+			// 설정을 마친 Image 객체를 dropArea 변수의 자식 요소에 추가
+			dropArea.appendChild(img);
 	    };
+	    // file 변수의 내용을 URL 형태의 문자열로 반환
 	    reader.readAsDataURL(file);
-	  }
+		}
 	}
 	
 	
-	/* 이미지 삭제 */
-	// 이미지가 있다면 영역 전체 중 어느 한 곳을 클릭하더라도 confirm 질문이 나오도록 코딩 추가 필요
+	/* 이미지 삭제 기능 */
+	// 이미지 클릭 시 실행될 removeImage 함수 정의
 	function removeImage(e) {
+		// 이미지 삭제 여부 대화상자 표시
 		if(confirm('이미지를 삭제하시겠습니까?')) {
+			// 클릭된 이미지를 img 변수에 할당
 			var img = e.target;
+			// remove 메서드를 호출하여 DOM에서 
 			img.remove();
 			alert('이미지가 삭제되었습니다.');
 			resetDropArea();
@@ -493,13 +333,13 @@
 	
 	/* 드래그 영역 리셋 */
 	function resetDropArea() {
-		var dropArea = document.getElementById('drop-area');
+		var dropArea = document.getElementById('css-location');
 		dropArea.innerHTML = '<h3>이미지를 가져오세요.</h3>';
 		
 		// input 요소 재생성
 		var input = document.createElement('input');
 		input.type = 'file';
-		input.id = 'fileElement';
+		input.id = 'img-location';
 		input.multiple = true;
 		input.accept = 'image/*';
 		input.style.display = 'none';
@@ -508,12 +348,12 @@
 		// label 요소 재생성
 		var label = document.createElement('label');
 		label.className = 'button';
-		label.setAttribute('for', 'fileElement');
+		label.setAttribute('for', 'img-location');
 		label.textContent = '이미지 선택';
 		dropArea.appendChild(label);
 		
 		// 이벤트 리스너를 input 요소에 재연결
-		document.getElementById('fileElement').addEventListener('change', function(e) {
+		document.getElementById('img-location').addEventListener('change', function(e) {
 			var files = e.target.files;
 			uploadFiles(files);
 		});
