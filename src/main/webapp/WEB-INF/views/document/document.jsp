@@ -321,33 +321,48 @@
 		if(confirm('이미지를 삭제하시겠습니까?')) {
 			// 클릭된 이미지를 img 변수에 할당
 			var img = e.target;
-			// remove 메서드를 호출하여 DOM에서 
+			// remove 메서드를 호출하여 DOM에서 이미지 요소 삭제
 			img.remove();
+			// 이미지 삭제 알림창 표시
 			alert('이미지가 삭제되었습니다.');
+			// resetDropArea 함수 호출
 			resetDropArea();
 		} else {
+			// 이미지 삭제 취소 알림창 표시
 			alert('이미지 삭제가 취소되었습니다.');
 		}
 	}
 	
 	
-	/* 드래그 영역 리셋 */
+	/* 드래그 영역 리셋 기능 */
+	// resetDropArea 함수 정의
 	function resetDropArea() {
+		// css-location 요소를 dropArea 변수에 재할당
 		var dropArea = document.getElementById('css-location');
+		// 내부 HTML 설정
 		dropArea.innerHTML = '<h3>이미지를 가져오세요.</h3>';
 		
-		// input 요소 재생성
+		// file 타입의 input 변수 생성
 		var input = document.createElement('input');
+		// input 변수 type 할당
 		input.type = 'file';
+		// input 변수 id 할당
 		input.id = 'img-location';
+		// 여러 파일을 선택 가능하도록 설정
 		input.multiple = true;
+		// 이미지 파일만 선택 가능하도록 설정(모든 이미지 확장자 포함)
 		input.accept = 'image/*';
+		// 이미지 요소가 표시되지 않도록 설정
 		input.style.display = 'none';
+		// 설정을 마친 input 요소를 dropArea 변수의 자식 요소에 추가
 		dropArea.appendChild(input);
 		
-		// label 요소 재생성
+		// label 요소 생성
 		var label = document.createElement('label');
+		// label 요소의 class 속성 설정
 		label.className = 'button';
+		// label 요소의 for 속성에 값 할당
+		//
 		label.setAttribute('for', 'img-location');
 		label.textContent = '이미지 선택';
 		dropArea.appendChild(label);
@@ -357,6 +372,6 @@
 			var files = e.target.files;
 			uploadFiles(files);
 		});
-	}	
+	}
 </script>
 </html>
