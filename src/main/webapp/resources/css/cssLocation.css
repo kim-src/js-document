@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+/* 첨부 이미지 */
+#css-location {
+	margin: 0;
+	padding: 0;
+	cursor: pointer;		
+	text-align: center;
+	color: black;
+	font-weight: normal;
+	font-family: Arial, sans-serif;
+	position: relative;
+}
+#css-location:hover {
+	background: skyblue;
+}
+.button {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  background: #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.button:hover {
+  background: #ddd;
+}
