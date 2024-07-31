@@ -29,6 +29,8 @@
 	body {
 		margin: 0;
 		padding: 0;
+		weight: 100vw;
+		height: 100vh;
 		font-family: "NanumMyeongjo", NanumMyeongjo;
 	}
 	
@@ -41,6 +43,7 @@
 	}
 	
 	.main {
+		margin: 5%; /* 내비게이터가 위치할 곳 */
 		justify-content: center;
 		display: flex;
 	}
@@ -126,20 +129,20 @@
 	  background: #ddd;
 	}
 	
-	#folder-input {
+	.interface-folder {
+		margin: 0;
+		padding: 0;
 		background-color: skyblue;
 		cursor: pointer;
 	}
 </style>
 </head>
 <body>
-	<!-- PDF 변환 버튼 -->
-	<button onclick="getPDF();">PDF 변환</button>
-	<!-- 폴더 업로드 버튼 -->
-	<div id="image-container">
-		<input type="file" id="folder-input" webkitdirectory directory multiple>
-	</div>
 	<section class="container">
+		<!-- 폴더 업로드 버튼 -->
+		<div>
+			<input type="file" id="folder-input" class="interface-folder" webkitdirectory directory multiple>
+		</div>
 		<div class="main" id="full-document">
 			<table class="table total-size">
 				<tbody class="document-text">
@@ -205,40 +208,45 @@
 						<td colspan="6" class="record-3-2" colspan="2"><strong>공동 주변사진</strong></td>
 					</tr>
 					<tr>
-						<td colspan="5" class="record-4-1 img-area" id="css-location" rowspan="2">
+						<td colspan="5" class="record-4-1 img-area" id="css-location" data-img-key="location" rowspan="2">
 							<div>
 								<h4>이미지를 가져오세요.</h4>
-								<img id="folder-img-location" src="" style="display: none;" alt="공동 위치도">
-								<input type="file" id="img-location" multiple accept="image/*" style="display: none" alt="공동 위치도">
+								<img style="display: none">
+								<input type="file" id="img-location" multiple accept="image/*" style="display: none">
 								<label class="button" for="img-location">이미지 선택</label>
+								
 							</div>
 						</td>
-						<td colspan="3" class="record-4-2 img-area" id="css-front">
+						<td colspan="3" class="record-4-2 img-area" id="css-front" data-img-key="front">
 							<div>
 								<h4>이미지를 가져오세요.</h4>
+								<img style="display: none">
 								<input type="file" id="img-front" multiple accept="image/*" style="display: none">
 								<label class="button" for="img-front">이미지 선택</label>
 							</div>
 						</td>
-						<td colspan="3" class="record-4-2 img-area" id="css-back">
+						<td colspan="3" class="record-4-2 img-area" id="css-back" data-img-key="back">
 							<div>
 								<h4>이미지를 가져오세요.</h4>
+								<img style="display: none">
 								<input type="file" id="img-back" multiple accept="image/*" style="display: none">
 								<label class="button" for="img-back">이미지 선택</label>
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="3" class="record-4-2 img-area" id="css-left">
+						<td colspan="3" class="record-4-2 img-area" id="css-left" data-img-key="left">
 							<div>
 								<h4>이미지를 가져오세요.</h4>
+								<img style="display: none">
 								<input type="file" id="img-left" multiple accept="image/*" style="display: none">
 								<label class="button" for="img-left">이미지 선택</label>
 							</div>
 						</td>
-						<td colspan="3" class="record-4-2 img-area" id="css-right">
+						<td colspan="3" class="record-4-2 img-area" id="css-right" data-img-key="right">
 							<div>
 								<h4>이미지를 가져오세요.</h4>
+								<img style="display: none">
 								<input type="file" id="img-right" multiple accept="image/*" style="display: none">
 								<label class="button" for="img-right">이미지 선택</label>
 							</div>
@@ -257,39 +265,44 @@
 						<td colspan="3" class="record-5-4"><strong>횡단면</strong></td>
 					</tr>
 					<tr>
-						<td colspan="3" class="record-6-1 img-area" id="css-flat-section">
+						<td colspan="3" class="record-6-1 img-area" id="css-flat-section" data-img-key="flat-section">
 							<div>
 								<h4>이미지를 가져오세요.</h4>
+								<img style="display: none">
 								<input type="file" id="img-flat-section" multiple accept="image/*" style="display: none">
 								<label class="button" for="img-flat-section">이미지 선택</label>
 							</div>
 						</td>
-						<td colspan="2" class="record-6-2 img-area" rowspan="2" id="css-long-section">
+						<td colspan="2" class="record-6-2 img-area" rowspan="2" id="css-long-section" data-img-key="long-section">
 							<div>
 								<h4>이미지를 가져오세요.</h4>
+								<img style="display: none">
 								<input type="file" id="img-long-section" multiple accept="image/*" style="display: none">
 								<label class="button" for="img-long-section">이미지 선택</label>
 							</div>
 						</td>
-						<td colspan="3" class="record-6-2 img-area" rowspan="2" id="css-cross-section">
+						<td colspan="3" class="record-6-2 img-area" rowspan="2" id="css-cross-section" data-img-key="cross-section">
 							<div>
 								<h4>이미지를 가져오세요.</h4>
+								<img style="display: none">
 								<input type="file" id="img-cross-section" multiple accept="image/*" style="display: none">
 								<label class="button" for="img-cross-section">이미지 선택</label>
 							</div>
 						</td>
-						<td colspan="3" class="record-6-3 img-area" rowspan="2" id="css-cavity">
+						<td colspan="3" class="record-6-3 img-area" rowspan="2" id="css-cavity" data-img-key="cavity">
 							<div>
 								<h4>이미지를 가져오세요.</h4>
+								<img style="display: none">
 								<input type="file" id="img-cavity" multiple accept="image/*" style="display: none">
 								<label class="button" for="img-cavity">이미지 선택</label>
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="3" class="record-6-4 img-area" id="css-surface">
+						<td colspan="3" class="record-6-4 img-area" id="css-surface" data-img-key="surface">
 							<div>
 								<h4>이미지를 가져오세요.</h4>
+								<img style="display: none">
 								<input type="file" id="img-surface" multiple accept="image/*" style="display: none">
 								<label class="button" for="img-surface">이미지 선택</label>
 							</div>
@@ -298,6 +311,16 @@
 				</tbody>
 			</table>
 		</div>
+	</section>
+	<section class="helper">
+		<div class="readme">
+			<p class="readme-title">이미지 첨부 방법</p>
+			<p class="readme-contents">1. 이미지가 담긴 폴더를 드래그하여 일괄 첨부한다.</p>
+			<p class="readme-contents">2. 이미지를 직접 드래그하여 개별 첨부한다.</p>
+			<p class="readme-contents">3. 이미지 선택 버튼을 클릭하여 개별 첨부한다.</p>
+		</div>
+		<!-- PDF 변환 버튼 -->
+		<button onclick="getPDF();">PDF 변환</button>
 	</section>
 </body>
 <!-- 클라이언트 사이드에서의 PDF 변환 기능 -->

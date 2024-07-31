@@ -1,5 +1,6 @@
 /* 이미지 업로드 기능 */
 
+/* 파일 드래그 업로드 기능 */
 // HTML 파싱 및 DOM 트리 구축 이후 콜백 함수를 실행하도록 설정
 document.addEventListener('DOMContentLoaded', function() {
 	// 클래스가 img-area인 모든 HTML 요소들의 컬렉션 구축
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-	// uploadFiles 함수 정의
+	/* 파일 선택 업로드 기능 */
     function uploadFiles(files, areaId) {
 		// HTML 문서에서 개별 ID 요소를 dropArea 변수에 할당
         var dropArea = document.getElementById(areaId);
