@@ -8,9 +8,17 @@
 <title>js-document</title>
 <!-- 테이블 규격 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tableSet.css">
-<!-- 이미지 스타일 -->
+<!-- 요소 아이디별 이미지 스타일 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssLocation.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssFront.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssBack.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssLeft.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssRight.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssFlatSection.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssLongSection.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssCrossSection.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssCavity.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssSurface.css">
 <style>
 	/* 기본 스타일 */
 	@font-face {
@@ -103,10 +111,34 @@
 	.strong-row td {
 		background-color: #f2f2f2;
 	}
+	
+	.button {
+	  display: inline-block;
+	  margin: 0;
+	  padding: 0;
+	  background: #ccc;
+	  cursor: pointer;
+	  border-radius: 5px;
+	  border: 1px solid #ccc;
+	}
+	
+	.button:hover {
+	  background: #ddd;
+	}
+	
+	#folder-input {
+		background-color: skyblue;
+		cursor: pointer;
+	}
 </style>
 </head>
 <body>
+	<!-- PDF 변환 버튼 -->
 	<button onclick="getPDF();">PDF 변환</button>
+	<!-- 폴더 업로드 버튼 -->
+	<div id="image-container">
+		<input type="file" id="folder-input" webkitdirectory directory multiple>
+	</div>
 	<section class="container">
 		<div class="main" id="full-document">
 			<table class="table total-size">
@@ -173,31 +205,44 @@
 						<td colspan="6" class="record-3-2" colspan="2"><strong>공동 주변사진</strong></td>
 					</tr>
 					<tr>
-						<td colspan="5" class="record-4-1" id="css-location" rowspan="2">
+						<td colspan="5" class="record-4-1 img-area" id="css-location" rowspan="2">
 							<div>
-								<h3>이미지를 가져오세요.</h3>
-								<input type="file" id="img-location" multiple accept="image/*" style="display: none">
+								<h4>이미지를 가져오세요.</h4>
+								<img id="folder-img-location" src="" style="display: none;" alt="공동 위치도">
+								<input type="file" id="img-location" multiple accept="image/*" style="display: none" alt="공동 위치도">
 								<label class="button" for="img-location">이미지 선택</label>
 							</div>
 						</td>
-						<td colspan="3" class="record-4-2" id="css-front">
+						<td colspan="3" class="record-4-2 img-area" id="css-front">
 							<div>
-								<h3>이미지 가져왐</h3>
+								<h4>이미지를 가져오세요.</h4>
 								<input type="file" id="img-front" multiple accept="image/*" style="display: none">
-								<label class="button" for="img-front">이미쥐 선택</label>
+								<label class="button" for="img-front">이미지 선택</label>
 							</div>
 						</td>
-						<td colspan="3" class="record-4-2" id="css-back">
+						<td colspan="3" class="record-4-2 img-area" id="css-back">
 							<div>
-								<h3>이미지 가져왐</h3>
+								<h4>이미지를 가져오세요.</h4>
 								<input type="file" id="img-back" multiple accept="image/*" style="display: none">
-								<label class="button" for="img-back">이미쥐 선택</label>
+								<label class="button" for="img-back">이미지 선택</label>
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="3" class="record-4-2"><img src="resources/images/left.jpg" alt="left"></td>
-						<td colspan="3" class="record-4-2"><img src="resources/images/right.jpg" alt="right"></td>
+						<td colspan="3" class="record-4-2 img-area" id="css-left">
+							<div>
+								<h4>이미지를 가져오세요.</h4>
+								<input type="file" id="img-left" multiple accept="image/*" style="display: none">
+								<label class="button" for="img-left">이미지 선택</label>
+							</div>
+						</td>
+						<td colspan="3" class="record-4-2 img-area" id="css-right">
+							<div>
+								<h4>이미지를 가져오세요.</h4>
+								<input type="file" id="img-right" multiple accept="image/*" style="display: none">
+								<label class="button" for="img-right">이미지 선택</label>
+							</div>
+						</td>
 					</tr>
 
 
@@ -212,30 +257,55 @@
 						<td colspan="3" class="record-5-4"><strong>횡단면</strong></td>
 					</tr>
 					<tr>
-						<td colspan="3" class="record-6-1">
+						<td colspan="3" class="record-6-1 img-area" id="css-flat-section">
 							<div>
-								<h3>이미지를 가져오세요.</h3>
+								<h4>이미지를 가져오세요.</h4>
 								<input type="file" id="img-flat-section" multiple accept="image/*" style="display: none">
 								<label class="button" for="img-flat-section">이미지 선택</label>
 							</div>
 						</td>
-						<td colspan="2" class="record-6-2" rowspan="2"><img src="resources/images/long-section.jpg" alt="long-section"></td>
-						<td colspan="3" class="record-6-2" rowspan="2"><img src="resources/images/cross-section.jpg" alt="cross-section"></td>
-						<td colspan="3" class="record-6-3" rowspan="2"><img src="resources/images/cavity.jpg" alt="cavity"></td>
+						<td colspan="2" class="record-6-2 img-area" rowspan="2" id="css-long-section">
+							<div>
+								<h4>이미지를 가져오세요.</h4>
+								<input type="file" id="img-long-section" multiple accept="image/*" style="display: none">
+								<label class="button" for="img-long-section">이미지 선택</label>
+							</div>
+						</td>
+						<td colspan="3" class="record-6-2 img-area" rowspan="2" id="css-cross-section">
+							<div>
+								<h4>이미지를 가져오세요.</h4>
+								<input type="file" id="img-cross-section" multiple accept="image/*" style="display: none">
+								<label class="button" for="img-cross-section">이미지 선택</label>
+							</div>
+						</td>
+						<td colspan="3" class="record-6-3 img-area" rowspan="2" id="css-cavity">
+							<div>
+								<h4>이미지를 가져오세요.</h4>
+								<input type="file" id="img-cavity" multiple accept="image/*" style="display: none">
+								<label class="button" for="img-cavity">이미지 선택</label>
+							</div>
+						</td>
 					</tr>
 					<tr>
-						<td colspan="3" class="record-6-4"><img src="resources/images/surface.jpg" alt="surface"></td>
+						<td colspan="3" class="record-6-4 img-area" id="css-surface">
+							<div>
+								<h4>이미지를 가져오세요.</h4>
+								<input type="file" id="img-surface" multiple accept="image/*" style="display: none">
+								<label class="button" for="img-surface">이미지 선택</label>
+							</div>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</section>
 </body>
+<!-- 클라이언트 사이드에서의 PDF 변환 기능 -->
 <script src="resources/lib/jspdf.min.js"></script>
 <script src="resources/lib/html2canvas.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/pdfGenerator.js">/* PDF 변환 기능 */</script>
-<script src="${pageContext.request.contextPath}/resources/js/dragLocation.js">/* 드래그 기능(location) */</script>
-<script src="${pageContext.request.contextPath}/resources/js/dragFront.js">/* 드래그 기능(front) */</script>
-<script>
-</script>
+<script src="${pageContext.request.contextPath}/resources/js/pdfGenerator.js"></script>
+<!-- 드래그를 이용한 이미지 파일 업로드 기능 -->
+<script src="${pageContext.request.contextPath}/resources/js/imgUploadHandler.js"></script>
+<!-- 드래그를 이용한 폴더 내 파일 업로드 기능 -->
+<script src="${pageContext.request.contextPath}/resources/js/folderUploadHandler.js"></script>
 </html>
