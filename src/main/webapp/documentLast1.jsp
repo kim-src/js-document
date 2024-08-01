@@ -157,45 +157,45 @@
 						</th>
 					</tr>
 					<tr>
-						<td colspan="1" class="record-2-1 sub-title">탐사 / 천공</td>
+						<td colspan="1" class="record-2-1" class="sub-title">탐사 / 천공</td>
 						<td colspan="1" class="record-2-2">탐사일  2022.02.15 / 천공일 -</td>
-						<td colspan="1" class="record-2-3 sub-title" rowspan="4">위<p class="gap-2-3"></p>치</td>
-						<td colspan="1" class="record-2-4 sub-title">위도</td>
+						<td colspan="1" class="record-2-3" rowspan="4">위<br><br><br>치</td>
+						<td colspan="1" class="record-2-4"class="sub-title">위도</td>
 						<td colspan="1" class="record-2-5">37.816955</td>
-						<td colspan="1" class="record-2-6 sub-title" rowspan="4">공<p class="gap-2-6"></p>동<p class="gap-2-6"></p>규<p class="gap-2-6"></p>모</td>
-						<td colspan="1" class="record-2-7 sub-title">토피(㎝)</td>
+						<td colspan="1" class="record-2-6" rowspan="4">공<span class="gap-2-6"></span>동<span class="gap-2-6"></span>규<span class="gap-2-6"></span>모</td>
+						<td colspan="1" class="record-2-7" class="sub-title">토피(㎝)</td>
 						<td colspan="1" class="record-2-8">53</td>
-						<td colspan="1" class="record-2-9 sub-title" rowspan="2">공동<span class="gap-2-9"></span>관리</td>
+						<td colspan="1" class="record-2-9" rowspan="2">공동<span class="gap-2-9"></span>관리</td>
 						<td colspan="1" class="record-2-10 sub-title">번호</td>
 						<td colspan="1" class="record-2-11">-</td>
 					</tr>
 					<tr>
-						<td colspan="1" class="record-2-1 sub-title">관  할  구</td>
+						<td colspan="1" class="record-2-1" class="sub-title">관  할  구</td>
 						<td colspan="1" class="record-2-2">백석읍</td>
-						<td colspan="1" class="record-2-4 sub-title">경도</td>
+						<td colspan="1" class="record-2-4" class="sub-title">경도</td>
 						<td colspan="1" class="record-2-5">126.947396</td>
-						<td colspan="1" class="record-2-7 sub-title">도로종단 길이(㎝)</td>
+						<td colspan="1" class="record-2-7" class="sub-title">도로종단 길이(㎝)</td>
 						<td colspan="1" class="record-2-8">95</td>
 						<td colspan="1" class="record-2-10 sub-title">등급</td>
 						<td colspan="1" class="record-2-11">-</td>
 					</tr>
 					<tr>
-						<td colspan="1" class="record-2-1 sub-title">도로명 주소</td>
+						<td colspan="1" class="record-2-1" class="sub-title">도로명 주소</td>
 						<td colspan="1" class="record-2-2">연곡리 327</td>
-						<td colspan="1" class="record-2-4 sub-title">차선</td>
+						<td colspan="1" class="record-2-4" class="sub-title">차선</td>
 						<td colspan="1" class="record-2-5">중앙선 기준 1차로</td>
-						<td colspan="1" class="record-2-7 sub-title">도로횡단 폭(㎝)</td>
+						<td colspan="1" class="record-2-7" class="sub-title">도로횡단 폭(㎝)</td>
 						<td colspan="1" class="record-2-8">69</td>
-						<td colspan="1" class="record-2-9 sub-title" rowspan="2">분석<span class="gap-2-9"></span>공동</td>
+						<td colspan="1" class="record-2-9" rowspan="2">분석<span class="gap-2-9"></span>공동</td>
 						<td colspan="1" class="record-2-10 sub-title">번호</td>
 						<td colspan="1" class="record-2-11">038-1</td>
 					</tr>
 					<tr>
-						<td colspan="1" class="record-2-1 sub-title">탐 사 방 향</td>
+						<td colspan="1" class="record-2-1" class="sub-title">탐 사 방 향</td>
 						<td colspan="1" class="record-2-2">비암리 29-1→연곡리 327-2</td>
-						<td colspan="1" class="record-2-4 sub-title">지점</td>
+						<td colspan="1" class="record-2-4" class="sub-title">지점</td>
 						<td colspan="1" class="record-2-5">정지선 후방 8.91m</td>
-						<td colspan="1" class="record-2-7 sub-title">바닥 깊이(㎝)</td>
+						<td colspan="1" class="record-2-7" class="sub-title">바닥 깊이(㎝)</td>
 						<td colspan="1" class="record-2-8">-</td>
 						<td colspan="1" class="record-2-10 sub-title">등급</td>
 						<td colspan="1" class="record-2-11">-</td>
@@ -256,13 +256,16 @@
 
 					<!-- cavity data -->
 					<tr class="strong-row">
-						<td colspan="4" class="record-5-1"><strong>(상단) 탐사영상 평면 / (하단) 노면영상</strong></td>
-						<td colspan="2" class="record-5-2"><strong>종단면</strong></td>
-						<td colspan="2" class="record-5-3"><strong>횡단면</strong></td>
-						<td colspan="3" class="record-5-4"><strong>공동확인 내시경 영상</strong></td>
+						<td colspan="3" class="record-5-1" rowspan="2"><strong>(상단) 탐사영상 평면 / (하단) 노면영상</strong></td>
+						<td colspan="5" class="record-5-2"><strong>탐사영상 수직단면</strong></td>
+						<td colspan="3" class="record-5-3" rowspan="2"><strong>공동확인 내시경 영상</strong></td>
+					</tr>
+					<tr class="strong-row">
+						<td colspan="2" class="record-5-4"><strong>종단면</strong></td>
+						<td colspan="3" class="record-5-4"><strong>횡단면</strong></td>
 					</tr>
 					<tr>
-						<td colspan="4" class="record-6-1 img-area" id="css-flat-section" data-img-key="flat-section">
+						<td colspan="3" class="record-6-1 img-area" id="css-flat-section" data-img-key="flat-section">
 							<div>
 								<h4>이미지를 가져오세요.</h4>
 								<img style="display: none">
@@ -278,7 +281,7 @@
 								<label class="button" for="img-long-section">이미지 선택</label>
 							</div>
 						</td>
-						<td colspan="2" class="record-6-3 img-area" rowspan="2" id="css-cross-section" data-img-key="cross-section">
+						<td colspan="3" class="record-6-2 img-area" rowspan="2" id="css-cross-section" data-img-key="cross-section">
 							<div>
 								<h4>이미지를 가져오세요.</h4>
 								<img style="display: none">
@@ -286,7 +289,7 @@
 								<label class="button" for="img-cross-section">이미지 선택</label>
 							</div>
 						</td>
-						<td colspan="3" class="record-6-4 img-area" rowspan="2" id="css-cavity" data-img-key="cavity">
+						<td colspan="3" class="record-6-3 img-area" rowspan="2" id="css-cavity" data-img-key="cavity">
 							<div>
 								<h4>이미지를 가져오세요.</h4>
 								<img style="display: none">
@@ -296,7 +299,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="4" class="record-6-5 img-area" id="css-surface" data-img-key="surface">
+						<td colspan="3" class="record-6-4 img-area" id="css-surface" data-img-key="surface">
 							<div>
 								<h4>이미지를 가져오세요.</h4>
 								<img style="display: none">

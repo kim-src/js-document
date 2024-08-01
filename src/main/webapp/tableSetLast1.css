@@ -2,8 +2,8 @@
 
 /* 테이블 규격 스타일 */
 .total-size {
-	width: 261.00mm;
-	height: 162.44mm;
+	width: 266.05mm;
+	height: 163.00mm;
 }
 
 .record-1 {
@@ -12,70 +12,68 @@
 }
 
 .record-2-1 {
-	width: 22.00mm;
-	height: 5.58mm;
+	width: 22.86mm;
+	height: 6.95mm;
 	font-size: 10.5pt;
 	letter-spacing: -0.03em;
 }
 
 .record-2-2 {
-	width: 80.00mm;
-	height: 5.58mm;
+	width: 82.88mm;
+	height: 6.95mm;
 	font-size: 10.5pt;
 	letter-spacing: -0.03em;
 }
 
 .record-2-3 {
-	width: 7.00mm;
-	height: 22.32mm;
+	width: 8.32mm;
+	height: 27.81mm;
 	font-size: 10.5pt;
-}
-
-.gap-2-3 {
-	margin-top: 2rem;
+	letter-spacing: -0.03em;
 }
 
 .record-2-4 {
-	width: 9.00mm;
-	height: 5.58mm;
+	width: 8.32mm;
+	height: 6.95mm;
 	font-size: 10.5pt;
 	letter-spacing: -0.03em;
 }
 
 .record-2-5 {
-	width: 45.00mm;
-	height: 5.58mm;
+	width: 46.97mm;
+	height: 6.95mm;
 	font-size: 10.5pt;
 	letter-spacing: -0.03em;
 }
 
 .record-2-6 {
-	width: 7.00mm;
-	height: 22.32mm;
+	width: 8.56mm;
+	height: 27.81mm;
 	font-size: 10.5pt;
+	writing-mode: vertical-lr;
 }
 
 .gap-2-6 {
-	margin-top: -0.6rem;
+	margin: 4px 0;
 }
 
 .record-2-7 {
-	width: 27.00mm;
-	height: 5.58mm;
+	width: 30.46mm;
+	height: 6.95mm;
 	font-size: 10.5pt;
 	letter-spacing: -0.03em;
 }
 
 .record-2-8 {
-	width: 16.00mm;
-	height: 5.58mm;
+	width: 12.35mm;
+	height: 6.95mm;
 	font-size: 10.5pt;
 	letter-spacing: -0.03em;
 }
 
 .record-2-9 {
-	width: 9.00mm;
-	height: 11.16mm;
+	width: 8.86mm;
+	height: 13.91mm;
 	font-size: 10.5pt;
 	letter-spacing: -0.03em;
 }
@@ -86,27 +84,27 @@
 }
 
 .record-2-10 {
-	width: 9.00mm;
-	height: 5.58mm;
+	width: 8.86mm;
+	height: 6.95mm;
 	font-size: 10.5pt;
 	letter-spacing: -0.03em;
 }
 
 .record-2-11 {
-	width: 30.00mm;
-	height: 5.58mm;
+	width: 27.62mm;
+	height: 6.95mm;
 	font-size: 10.5pt;
 	letter-spacing: -0.03em;
 }
 
 .record-3-1 {
-	width: 165.00mm;
-	height: 7.06mm;
+	width: 169.34mm;
+	height: 7.34mm;
 }
 
 .record-3-2 {
-	 width: 96.00mm;
-	 height: 7.06mm;
+	 width: 96.72mm;
+	 height: 7.34mm;
 }
 
 .record-4-1 {
@@ -115,51 +113,56 @@
 }
 
 .record-4-2 {
-	width: 48.00mm;
-	height: 30.00mm;
+	width: 48.36mm;
+	height: 28.54mm;
 }
 
 .record-5-1 {
-	width: 140.30mm;
-	height: 7.06mm;
+	width: 131.28mm;
+	height: 10.46mm;
 }
 
 .record-5-2 {
-	width: 45.70mm;
-	height: 7.06mm;
+	width: 85.12mm;
+	height: 5.23mm;
 }
 
 .record-5-3 {
-	width: 27.00mm;
-	height: 7.06mm;
+	width: 49.66mm;
+	height: 10.46mm;
 }
 
 .record-5-4 {
-	width: 48.00mm;
-	height: 7.06mm;
+	width: 42.56mm;
+	height: 5.23mm;
+}
+
+.record-5-5 {
+	width: 42.56mm;
+	height: 5.23mm;
 }
 
 .record-6-1 {
-	width: 140.30mm;
-	height: 22.00mm;
+	width: 131.28mm;
+	height: 15mm;
 }
 
 .record-6-2 {
-	width: 45.70mm;
-	height: 55.00mm;
+	width: 42.56mm;
+	height: 48mm;
 }
 
 .record-6-3 {
-	width: 27.00mm;
-	height: 55.00mm;
+	width: 42.56mm;
+	height: 48mm;
 }
 
 .record-6-4 {
-	width: 48.00mm;
-	height: 55.00mm;
+	width: 49.66mm;
+	height: 48mm;
 }
 
 .record-6-5 {
-	width: 140.30mm;
-	height: 33.00mm;
+	width: 131.28mm;
+	height: 33mm;
 }
