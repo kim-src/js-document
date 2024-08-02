@@ -29,8 +29,6 @@
 	body {
 		margin: 0;
 		padding: 0;
-		weight: 100vw;
-		height: 100vh;
 		font-family: "NanumMyeongjo", NanumMyeongjo;
 	}
 	
@@ -142,6 +140,9 @@
 		<!-- 폴더 업로드 버튼 -->
 		<div>
 			<input type="file" id="folder-input" class="interface-folder" webkitdirectory directory multiple>
+		</div>
+		<div>
+			<button onclick="location.href='http://localhost:9090/word.do';">WORD 변환</button>
 		</div>
 		<div class="main" id="full-document">
 			<table class="table total-size">
@@ -316,16 +317,21 @@
 			<p class="readme-contents">2. 이미지를 직접 드래그하여 개별 첨부한다.</p>
 			<p class="readme-contents">3. 이미지 선택 버튼을 클릭하여 개별 첨부한다.</p>
 		</div>
+		
 		<!-- PDF 변환 버튼 -->
 		<button onclick="getPDF();">PDF 변환</button>
+		
+		<!-- DOCS 변환 버튼 -->
+		<button onclick="getDocx()">WORD 변환</button>
 	</section>
 </body>
-<!-- 클라이언트 사이드에서의 PDF 변환 기능 -->
-<script src="resources/lib/jspdf.min.js"></script>
-<script src="resources/lib/html2canvas.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/pdfGenerator.js"></script>
 <!-- 드래그를 이용한 이미지 파일 업로드 기능 -->
 <script src="${pageContext.request.contextPath}/resources/js/imgUploadHandler.js"></script>
 <!-- 드래그를 이용한 폴더 내 파일 업로드 기능 -->
 <script src="${pageContext.request.contextPath}/resources/js/folderUploadHandler.js"></script>
+<!-- 클라이언트 사이드에서의 PDF 변환 기능 -->
+<script src="resources/lib/jspdf.min.js"></script>
+<script src="resources/lib/html2canvas.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/pdfGenerator.js"></script>
+<!-- 클라이언트 사이드에서의 DOCX 변환 기능 -->
 </html>

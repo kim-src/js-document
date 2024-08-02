@@ -10,7 +10,7 @@ function getPDF() {
 	
     html2canvas(document.getElementById('full-document')).then(canvas => {
         const imgData = canvas.toDataURL('image/png');
-        const pdf = new getPDF({
+        const pdf = new jsPDF({
         	orientation: 'landscape',
             unit: 'mm',
             format: 'a4',

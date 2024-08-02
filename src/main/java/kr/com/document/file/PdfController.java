@@ -37,7 +37,7 @@ public class PdfController {
         response.setContentType("application/pdf");
         response.setHeader("Content-Disposition", "attachment; filename=\"document.pdf\"");
 
-        String fullPath = servletContext.getRealPath("/WEB-INF/views/document.html");
+        String fullPath = servletContext.getRealPath("/WEB-INF/views/document/document.html");
         Path path = Paths.get(fullPath);
         File fontFile = new File(servletContext.getRealPath("/resources/fonts/ChosunNm.ttf"));
 
