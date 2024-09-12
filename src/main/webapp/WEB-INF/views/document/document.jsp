@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>js-document</title>
-<!-- í…Œì´ë¸” ê·œê²© -->
+<!-- Å×ÀÌºí ±Ô°İ -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tableSet.css">
-<!-- ìš”ì†Œ ì•„ì´ë””ë³„ ì´ë¯¸ì§€ ìŠ¤íƒ€ì¼ -->
+<!-- ¿ä¼Ò ¾ÆÀÌµğº° ÀÌ¹ÌÁö ½ºÅ¸ÀÏ -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssLocation.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssFront.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssBack.css">
@@ -20,7 +20,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssCavity.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cssSurface.css">
 <style>
-	/* ê¸°ë³¸ ìŠ¤íƒ€ì¼ */
+	/* ±âº» ½ºÅ¸ÀÏ */
 	@font-face {
         font-family: "NanumMyeongjo";
         src: url("resources/fonts/NanumMyeongjo.otf") format("truetype");
@@ -40,10 +40,20 @@
 		height: 100%;
 	}
 	
-	.main {
-		margin: 5%; /* ë‚´ë¹„ê²Œì´í„°ê°€ ìœ„ì¹˜í•  ê³³ */
-		justify-content: center;
+	.img-container {
+		margin: 10% 0;
+	}
+	
+	.header {
+		margin-top: 1%;
 		display: flex;
+	    justify-content: center;
+	    width: 100%;
+	}
+	
+	.main {
+		display: flex;
+		justify-content: center;
 	}
 		
 	.table {
@@ -70,7 +80,11 @@
 	
 	
 	
-	/* ì„¸ë¶€ ìŠ¤íƒ€ì¼ */
+	/* ¼¼ºÎ ½ºÅ¸ÀÏ */
+	.container {
+		margin-bottom: 3%;
+	}
+	
 	.title {
 		position: relative;
 		width: 266.06mm;
@@ -114,142 +128,171 @@
 	}
 	
 	.button {
-	  display: inline-block;
-	  margin: 0;
-	  padding: 0;
-	  background: #ccc;
-	  cursor: pointer;
-	  border-radius: 5px;
-	  border: 1px solid #ccc;
+		 display: flex;
+		 justify-content: center;
+		 align-items: center;
+		 
+		 margin: auto;
+		 padding: 0;
+		 width: 100px;
+		 height: 30px;
+		 color: black;
+		 background-color: #f2f2f2;
+		 cursor: pointer;
+		 border-radius: 5px;
+		 border: 1px solid black;
 	}
 	
 	.button:hover {
-	  background: #ddd;
+		background: #ddd;
 	}
 	
-	.interface-folder {
-		margin: 0;
-		padding: 0;
-		background-color: skyblue;
+	.folder-container {
+		width: 985px;
+		height: 50px;
+		display: flex;
+		text-align: center;
+		justify-content: flex-end;
+		align-items: center;
+	}
+	
+	.folder-upload-button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100px;
+		height: 30px;
+		color: black;
+		background-color: #f2f2f2;
 		cursor: pointer;
+		border-radius: 5px;
+		border: 1px solid black;
+	}
+	
+	.folder-upload-button:hover {
+		background: #ddd;
+	}
+	
+	.none {
+		display: none;
 	}
 </style>
 </head>
 <body>
+	<section class="header">
+		<!-- Æú´õ ¾÷·Îµå ¹öÆ° -->
+		<div class="folder-container">
+			<input type="file" id="folder-input" class="none" webkitdirectory directory multiple>
+			<label for="folder-input" class="folder-upload-button"><strong>Æú´õ ¼±ÅÃ</strong></label>
+		</div>
+	</section>
 	<section class="container">
-		<!-- í´ë” ì—…ë¡œë“œ ë²„íŠ¼ -->
-		<div>
-			<input type="file" id="folder-input" class="interface-folder" webkitdirectory directory multiple>
-		</div>
-		<div>
-			<button onclick="location.href='http://localhost:9090/word.do';">WORD ë³€í™˜</button>
-		</div>
 		<div class="main" id="full-document">
 			<table class="table total-size">
 				<tbody class="document-text">
 					<tr>
-						<th colspan="11" class="title"><strong>ë¶„ì„ ê³µë™ì¡°ì‚¬ì„œ</strong>
+						<th colspan="11" class="title"><strong>ºĞ¼® °øµ¿Á¶»ç¼­</strong>
 							<table class="inner-table">
 								<tr>
-									<td class="record-1"><strong>ê³µë™ê´€ë¦¬ë²ˆí˜¸</strong></td>
-									<td class="record-1"></td>
+									<td class="record-1"><strong>°øµ¿°ü¸®¹øÈ£</strong></td>
+									<td class="record-1">A010</td>
 								</tr>
 							</table>
 						</th>
 					</tr>
 					<tr>
-						<td colspan="1" class="record-2-1 sub-title">íƒì‚¬ / ì²œê³µ</td>
-						<td colspan="1" class="record-2-2">íƒì‚¬ì¼  2022.02.15 / ì²œê³µì¼ -</td>
-						<td colspan="1" class="record-2-3 sub-title" rowspan="4">ìœ„<p class="gap-2-3"></p>ì¹˜</td>
-						<td colspan="1" class="record-2-4 sub-title">ìœ„ë„</td>
-						<td colspan="1" class="record-2-5">37.816955</td>
-						<td colspan="1" class="record-2-6 sub-title" rowspan="4">ê³µ<p class="gap-2-6"></p>ë™<p class="gap-2-6"></p>ê·œ<p class="gap-2-6"></p>ëª¨</td>
-						<td colspan="1" class="record-2-7 sub-title">í† í”¼(ã)</td>
+						<td colspan="1" class="record-2-1 sub-title">Å½»ç / Ãµ°ø</td>
+						<td colspan="1" class="record-2-2">Å½»çÀÏ 2024.07.04.</td>
+						<td colspan="1" class="record-2-3 sub-title" rowspan="4">À§<p class="gap-2-3"></p>Ä¡</td>
+						<td colspan="1" class="record-2-4 sub-title">À§µµ</td>
+						<td colspan="1" class="record-2-5">37.464973</td>
+						<td colspan="1" class="record-2-6 sub-title" rowspan="4">°ø<p class="gap-2-6"></p>µ¿<p class="gap-2-6"></p>±Ô<p class="gap-2-6"></p>¸ğ</td>
+						<td colspan="1" class="record-2-7 sub-title">ÅäÇÇ(§¯)</td>
+						<td colspan="1" class="record-2-8">25</td>
+						<td colspan="1" class="record-2-9 sub-title" rowspan="2">°øµ¿<span class="gap-2-9"></span>°ü¸®</td>
+						<td colspan="1" class="record-2-10 sub-title">¹øÈ£</td>
+						<td colspan="1" class="record-2-11">2024-001-087</td>
+					</tr>
+					<tr>
+						<td colspan="1" class="record-2-1 sub-title">Áö ¹ø ÁÖ ¼Ò</td>
+						<td colspan="1" class="record-2-2">¼­¿ï °­³²±¸ ¼¼°îµ¿ 121</td>
+						<td colspan="1" class="record-2-4 sub-title">°æµµ</td>
+						<td colspan="1" class="record-2-5">127.106565</td>
+						<td colspan="1" class="record-2-7 sub-title">µµ·ÎÁ¾´Ü ±æÀÌ(§¯)</td>
+						<td colspan="1" class="record-2-8">117</td>
+						<td colspan="1" class="record-2-10 sub-title">µî±Ş</td>
+						<td colspan="1" class="record-2-11">ÀÏ¹İµî±Ş</td>
+					</tr>
+					<tr>
+						<td colspan="1" class="record-2-1 sub-title">µµ·Î¸í</td>
+						<td colspan="1" class="record-2-2">Çå¸ª·Î</td>
+						<td colspan="1" class="record-2-4 sub-title">Â÷¼±</td>
+						<td colspan="1" class="record-2-5">Áß¾Ó¼± ±âÁØ 2Â÷·Î</td>
+						<td colspan="1" class="record-2-7 sub-title">µµ·ÎÈ¾´Ü Æø(§¯)</td>
 						<td colspan="1" class="record-2-8">53</td>
-						<td colspan="1" class="record-2-9 sub-title" rowspan="2">ê³µë™<span class="gap-2-9"></span>ê´€ë¦¬</td>
-						<td colspan="1" class="record-2-10 sub-title">ë²ˆí˜¸</td>
-						<td colspan="1" class="record-2-11">-</td>
-					</tr>
-					<tr>
-						<td colspan="1" class="record-2-1 sub-title">ê´€  í•   êµ¬</td>
-						<td colspan="1" class="record-2-2">ë°±ì„ì</td>
-						<td colspan="1" class="record-2-4 sub-title">ê²½ë„</td>
-						<td colspan="1" class="record-2-5">126.947396</td>
-						<td colspan="1" class="record-2-7 sub-title">ë„ë¡œì¢…ë‹¨ ê¸¸ì´(ã)</td>
-						<td colspan="1" class="record-2-8">95</td>
-						<td colspan="1" class="record-2-10 sub-title">ë“±ê¸‰</td>
-						<td colspan="1" class="record-2-11">-</td>
-					</tr>
-					<tr>
-						<td colspan="1" class="record-2-1 sub-title">ë„ë¡œëª… ì£¼ì†Œ</td>
-						<td colspan="1" class="record-2-2">ì—°ê³¡ë¦¬ 327</td>
-						<td colspan="1" class="record-2-4 sub-title">ì°¨ì„ </td>
-						<td colspan="1" class="record-2-5">ì¤‘ì•™ì„  ê¸°ì¤€ 1ì°¨ë¡œ</td>
-						<td colspan="1" class="record-2-7 sub-title">ë„ë¡œíš¡ë‹¨ í­(ã)</td>
-						<td colspan="1" class="record-2-8">69</td>
-						<td colspan="1" class="record-2-9 sub-title" rowspan="2">ë¶„ì„<span class="gap-2-9"></span>ê³µë™</td>
-						<td colspan="1" class="record-2-10 sub-title">ë²ˆí˜¸</td>
+						<td colspan="1" class="record-2-9 sub-title" rowspan="2">ºĞ¼®<span class="gap-2-9"></span>°øµ¿</td>
+						<td colspan="1" class="record-2-10 sub-title">¹øÈ£</td>
 						<td colspan="1" class="record-2-11">038-1</td>
 					</tr>
 					<tr>
-						<td colspan="1" class="record-2-1 sub-title">íƒ ì‚¬ ë°© í–¥</td>
-						<td colspan="1" class="record-2-2">ë¹„ì•”ë¦¬ 29-1â†’ì—°ê³¡ë¦¬ 327-2</td>
-						<td colspan="1" class="record-2-4 sub-title">ì§€ì </td>
-						<td colspan="1" class="record-2-5">ì •ì§€ì„  í›„ë°© 8.91m</td>
-						<td colspan="1" class="record-2-7 sub-title">ë°”ë‹¥ ê¹Šì´(ã)</td>
-						<td colspan="1" class="record-2-8">-</td>
-						<td colspan="1" class="record-2-10 sub-title">ë“±ê¸‰</td>
-						<td colspan="1" class="record-2-11">-</td>
+						<td colspan="1" class="record-2-1 sub-title">Å½ »ç ¹æ Çâ</td>
+						<td colspan="1" class="record-2-2">¼­Çâ</td>
+						<td colspan="1" class="record-2-4 sub-title">ÁöÁ¡</td>
+						<td colspan="1" class="record-2-5">Á¤Áö¼± ÈÄ¹æ 11.07m</td>
+						<td colspan="1" class="record-2-7 sub-title">¹Ù´Ú ±íÀÌ(§¯)</td>
+						<td colspan="1" class="record-2-8">37</td>
+						<td colspan="1" class="record-2-10 sub-title">µî±Ş</td>
+						<td colspan="1" class="record-2-11">ÀÏ¹İµî±Ş</td>
 					</tr>
 
 
 					<!-- location data -->
 					<tr class="strong-row">
-						<td colspan="5" class="record-3-1"><strong>ê³µë™ ìœ„ì¹˜ë„</strong></td>
-						<td colspan="6" class="record-3-2" colspan="2"><strong>ê³µë™ ì£¼ë³€ì‚¬ì§„</strong></td>
+						<td colspan="5" class="record-3-1"><strong>°øµ¿ À§Ä¡µµ</strong></td>
+						<td colspan="6" class="record-3-2" colspan="2"><strong>°øµ¿ ÁÖº¯»çÁø</strong></td>
 					</tr>
 					<tr>
 						<td colspan="5" class="record-4-1 img-area" id="css-location" data-img-key="location" rowspan="2">
-							<div>
-								<h4>ì´ë¯¸ì§€ë¥¼ ê°€ì ¸ì˜¤ì„¸ìš”.</h4>
+							<div class="img-container">
+								<h4>ÀÌ¹ÌÁö¸¦ °¡Á®¿À¼¼¿ä.</h4>
 								<img style="display: none">
 								<input type="file" id="img-location" multiple accept="image/*" style="display: none">
-								<label class="button" for="img-location">ì´ë¯¸ì§€ ì„ íƒ</label>
+								<label class="button" for="img-location">ÀÌ¹ÌÁö ¼±ÅÃ</label>
 								
 							</div>
 						</td>
 						<td colspan="3" class="record-4-2 img-area" id="css-front" data-img-key="front">
-							<div>
-								<h4>ì´ë¯¸ì§€ë¥¼ ê°€ì ¸ì˜¤ì„¸ìš”.</h4>
+							<div class="img-container">
+								<h4>ÀÌ¹ÌÁö¸¦ °¡Á®¿À¼¼¿ä.</h4>
 								<img style="display: none">
 								<input type="file" id="img-front" multiple accept="image/*" style="display: none">
-								<label class="button" for="img-front">ì´ë¯¸ì§€ ì„ íƒ</label>
+								<label class="button" for="img-front">ÀÌ¹ÌÁö ¼±ÅÃ</label>
 							</div>
 						</td>
 						<td colspan="3" class="record-4-2 img-area" id="css-back" data-img-key="back">
-							<div>
-								<h4>ì´ë¯¸ì§€ë¥¼ ê°€ì ¸ì˜¤ì„¸ìš”.</h4>
+							<div class="img-container">
+								<h4>ÀÌ¹ÌÁö¸¦ °¡Á®¿À¼¼¿ä.</h4>
 								<img style="display: none">
 								<input type="file" id="img-back" multiple accept="image/*" style="display: none">
-								<label class="button" for="img-back">ì´ë¯¸ì§€ ì„ íƒ</label>
+								<label class="button" for="img-back">ÀÌ¹ÌÁö ¼±ÅÃ</label>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="3" class="record-4-2 img-area" id="css-left" data-img-key="left">
-							<div>
-								<h4>ì´ë¯¸ì§€ë¥¼ ê°€ì ¸ì˜¤ì„¸ìš”.</h4>
+							<div class="img-container">
+								<h4>ÀÌ¹ÌÁö¸¦ °¡Á®¿À¼¼¿ä.</h4>
 								<img style="display: none">
 								<input type="file" id="img-left" multiple accept="image/*" style="display: none">
-								<label class="button" for="img-left">ì´ë¯¸ì§€ ì„ íƒ</label>
+								<label class="button" for="img-left">ÀÌ¹ÌÁö ¼±ÅÃ</label>
 							</div>
 						</td>
 						<td colspan="3" class="record-4-2 img-area" id="css-right" data-img-key="right">
-							<div>
-								<h4>ì´ë¯¸ì§€ë¥¼ ê°€ì ¸ì˜¤ì„¸ìš”.</h4>
+							<div class="img-container">
+								<h4>ÀÌ¹ÌÁö¸¦ °¡Á®¿À¼¼¿ä.</h4>
 								<img style="display: none">
 								<input type="file" id="img-right" multiple accept="image/*" style="display: none">
-								<label class="button" for="img-right">ì´ë¯¸ì§€ ì„ íƒ</label>
+								<label class="button" for="img-right">ÀÌ¹ÌÁö ¼±ÅÃ</label>
 							</div>
 						</td>
 					</tr>
@@ -257,52 +300,52 @@
 
 					<!-- cavity data -->
 					<tr class="strong-row">
-						<td colspan="4" class="record-5-1"><strong>(ìƒë‹¨) íƒì‚¬ì˜ìƒ í‰ë©´ / (í•˜ë‹¨) ë…¸ë©´ì˜ìƒ</strong></td>
-						<td colspan="2" class="record-5-2"><strong>ì¢…ë‹¨ë©´</strong></td>
-						<td colspan="2" class="record-5-3"><strong>íš¡ë‹¨ë©´</strong></td>
-						<td colspan="3" class="record-5-4"><strong>ê³µë™í™•ì¸ ë‚´ì‹œê²½ ì˜ìƒ</strong></td>
+						<td colspan="4" class="record-5-1"><strong>(»ó´Ü) Å½»ç¿µ»ó Æò¸é / (ÇÏ´Ü) ³ë¸é¿µ»ó</strong></td>
+						<td colspan="1" class="record-5-2"><strong>Á¾´Ü¸é</strong></td>
+						<td colspan="3" class="record-5-3"><strong>È¾´Ü¸é</strong></td>
+						<td colspan="3" class="record-5-4"><strong>°øµ¿È®ÀÎ ³»½Ã°æ ¿µ»ó</strong></td>
 					</tr>
 					<tr>
 						<td colspan="4" class="record-6-1 img-area" id="css-flat-section" data-img-key="flat-section">
-							<div>
-								<h4>ì´ë¯¸ì§€ë¥¼ ê°€ì ¸ì˜¤ì„¸ìš”.</h4>
+							<div class="img-container">
+								<h4>ÀÌ¹ÌÁö¸¦ °¡Á®¿À¼¼¿ä.</h4>
 								<img style="display: none">
 								<input type="file" id="img-flat-section" multiple accept="image/*" style="display: none">
-								<label class="button" for="img-flat-section">ì´ë¯¸ì§€ ì„ íƒ</label>
+								<label class="button" for="img-flat-section">ÀÌ¹ÌÁö ¼±ÅÃ</label>
 							</div>
 						</td>
-						<td colspan="2" class="record-6-2 img-area" rowspan="2" id="css-long-section" data-img-key="long-section">
-							<div>
-								<h4>ì´ë¯¸ì§€ë¥¼ ê°€ì ¸ì˜¤ì„¸ìš”.</h4>
+						<td colspan="1" class="record-6-2 img-area" rowspan="2" id="css-long-section" data-img-key="long-section">
+							<div class="img-container">
+								<h4>ÀÌ¹ÌÁö¸¦ °¡Á®¿À¼¼¿ä.</h4>
 								<img style="display: none">
 								<input type="file" id="img-long-section" multiple accept="image/*" style="display: none">
-								<label class="button" for="img-long-section">ì´ë¯¸ì§€ ì„ íƒ</label>
+								<label class="button" for="img-long-section">ÀÌ¹ÌÁö ¼±ÅÃ</label>
 							</div>
 						</td>
-						<td colspan="2" class="record-6-3 img-area" rowspan="2" id="css-cross-section" data-img-key="cross-section">
-							<div>
-								<h4>ì´ë¯¸ì§€ë¥¼ ê°€ì ¸ì˜¤ì„¸ìš”.</h4>
+						<td colspan="3" class="record-6-3 img-area" rowspan="2" id="css-cross-section" data-img-key="cross-section">
+							<div class="img-container">
+								<h4>ÀÌ¹ÌÁö¸¦ °¡Á®¿À¼¼¿ä.</h4>
 								<img style="display: none">
 								<input type="file" id="img-cross-section" multiple accept="image/*" style="display: none">
-								<label class="button" for="img-cross-section">ì´ë¯¸ì§€ ì„ íƒ</label>
+								<label class="button" for="img-cross-section">ÀÌ¹ÌÁö ¼±ÅÃ</label>
 							</div>
 						</td>
 						<td colspan="3" class="record-6-4 img-area" rowspan="2" id="css-cavity" data-img-key="cavity">
-							<div>
-								<h4>ì´ë¯¸ì§€ë¥¼ ê°€ì ¸ì˜¤ì„¸ìš”.</h4>
+							<div class="img-container">
+								<h4>ÀÌ¹ÌÁö¸¦ °¡Á®¿À¼¼¿ä.</h4>
 								<img style="display: none">
 								<input type="file" id="img-cavity" multiple accept="image/*" style="display: none">
-								<label class="button" for="img-cavity">ì´ë¯¸ì§€ ì„ íƒ</label>
+								<label class="button" for="img-cavity">ÀÌ¹ÌÁö ¼±ÅÃ</label>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="4" class="record-6-5 img-area" id="css-surface" data-img-key="surface">
-							<div>
-								<h4>ì´ë¯¸ì§€ë¥¼ ê°€ì ¸ì˜¤ì„¸ìš”.</h4>
+							<div class="img-container">
+								<h4>ÀÌ¹ÌÁö¸¦ °¡Á®¿À¼¼¿ä.</h4>
 								<img style="display: none">
 								<input type="file" id="img-surface" multiple accept="image/*" style="display: none">
-								<label class="button" for="img-surface">ì´ë¯¸ì§€ ì„ íƒ</label>
+								<label class="button" for="img-surface">ÀÌ¹ÌÁö ¼±ÅÃ</label>
 							</div>
 						</td>
 					</tr>
@@ -310,28 +353,9 @@
 			</table>
 		</div>
 	</section>
-	<section class="helper">
-		<div class="readme">
-			<p class="readme-title">ì´ë¯¸ì§€ ì²¨ë¶€ ë°©ë²•</p>
-			<p class="readme-contents">1. ì´ë¯¸ì§€ê°€ ë‹´ê¸´ í´ë”ë¥¼ ë“œë˜ê·¸í•˜ì—¬ ì¼ê´„ ì²¨ë¶€í•œë‹¤.</p>
-			<p class="readme-contents">2. ì´ë¯¸ì§€ë¥¼ ì§ì ‘ ë“œë˜ê·¸í•˜ì—¬ ê°œë³„ ì²¨ë¶€í•œë‹¤.</p>
-			<p class="readme-contents">3. ì´ë¯¸ì§€ ì„ íƒ ë²„íŠ¼ì„ í´ë¦­í•˜ì—¬ ê°œë³„ ì²¨ë¶€í•œë‹¤.</p>
-		</div>
-		
-		<!-- PDF ë³€í™˜ ë²„íŠ¼ -->
-		<button onclick="getPDF();">PDF ë³€í™˜</button>
-		
-		<!-- DOCS ë³€í™˜ ë²„íŠ¼ -->
-		<button onclick="getDocx()">WORD ë³€í™˜</button>
-	</section>
 </body>
-<!-- ë“œë˜ê·¸ë¥¼ ì´ìš©í•œ ì´ë¯¸ì§€ íŒŒì¼ ì—…ë¡œë“œ ê¸°ëŠ¥ -->
+<!-- µå·¡±×¸¦ ÀÌ¿ëÇÑ ÀÌ¹ÌÁö ÆÄÀÏ ¾÷·Îµå ±â´É -->
 <script src="${pageContext.request.contextPath}/resources/js/imgUploadHandler.js"></script>
-<!-- ë“œë˜ê·¸ë¥¼ ì´ìš©í•œ í´ë” ë‚´ íŒŒì¼ ì—…ë¡œë“œ ê¸°ëŠ¥ -->
+<!-- µå·¡±×¸¦ ÀÌ¿ëÇÑ Æú´õ ³» ÆÄÀÏ ¾÷·Îµå ±â´É -->
 <script src="${pageContext.request.contextPath}/resources/js/folderUploadHandler.js"></script>
-<!-- í´ë¼ì´ì–¸íŠ¸ ì‚¬ì´ë“œì—ì„œì˜ PDF ë³€í™˜ ê¸°ëŠ¥ -->
-<script src="resources/lib/jspdf.min.js"></script>
-<script src="resources/lib/html2canvas.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/pdfGenerator.js"></script>
-<!-- í´ë¼ì´ì–¸íŠ¸ ì‚¬ì´ë“œì—ì„œì˜ DOCX ë³€í™˜ ê¸°ëŠ¥ -->
 </html>

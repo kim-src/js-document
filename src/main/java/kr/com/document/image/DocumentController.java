@@ -1,4 +1,4 @@
-package kr.com.document.report;
+package kr.com.document.image;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,5 +10,5 @@ public class DocumentController {
 	public String getDocument() {
 		return "document/document";
 	}
-
+	
 }

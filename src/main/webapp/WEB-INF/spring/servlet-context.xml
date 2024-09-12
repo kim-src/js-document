@@ -18,7 +18,7 @@
     <beans:property name="prefix" value="/WEB-INF/views/" />
     <beans:property name="suffix" value=".jsp"/>
   </beans:bean>
-  
+   
   <!-- 리소스 폴더 지정  서블릿 타지않고 바로 호출 가능 -->
   <resources location="/resources/" mapping="/resources/**"  cache-period="31556926"></resources>
 
